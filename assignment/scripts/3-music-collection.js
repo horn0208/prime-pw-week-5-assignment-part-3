@@ -31,6 +31,7 @@ console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollec
 console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013));
 console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970));
 
+
 console.log('collection now contains:', collection);
 
 // - Add a function named `showCollection`. This function should:
@@ -65,3 +66,50 @@ function findByArtist(artist){
 console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
 console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
 // > When testing your functions, write all tests in the JavaScript file!
+
+// STRETCH GOALS!
+// - Create a function called `search`. This function should:
+//   - Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
+//   { artist: 'Ray Charles', year: 1957 }
+function search(searchItem) {
+    let results = [];
+    //  If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
+    if (typeof searchItem === 'undefined' || Object.keys(searchItem).length === 0) {
+        //console.log('no search item');
+        return collection;
+    }
+    //loop through array of record objects
+    for (let record of collection) { 
+        // for each, check if artist and year match between searchItem and record in collection
+        if (searchItem.artist === record.artist && searchItem.year === record.yearPublished) {
+            //console.log('found match:', record);
+            //push matching record into results
+            results.push(record);
+        }
+    } return results;
+}
+//----TESTS for search()----
+// console.log('search({})', search({}));
+// console.log('search()', search());
+// console.log('search({artist: "Blood Orange", year: 2013})', search({artist: 'Blood Orange', year: 2013}));
+// console.log('addToCollection("Another Album from that year", "Rodriguez", 1970)', addToCollection('Another Album from that year', 'Rodriguez', 1970));
+// console.log('search({artist: "Rodriguez", year: 1970})', search({artist: "Rodriguez", year: 1970}));
+// console.log('search({artist: "Wild Beasts", year: 1970})', search({artist: "Wild Beasts", year: 1970}));
+
+//   - The returned output from `search` should meet these requirements:
+//     - Return a new array of all items in the `collection` matching *all* of the search criteria.
+//     - If no results are found, return an empty array.
+//     - If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
+
+// - Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
+//   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
+//   - Update `search` to allow a `trackName` search criteria.
+//   - Update the `showCollection` function to display the list of tracks for each album with its name and duration.
+// ```
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
+//     3. NAME: DURATION
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
