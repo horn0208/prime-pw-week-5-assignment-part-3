@@ -30,6 +30,7 @@ console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection(
 console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013));
 console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013));
 console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970));
+// console.log('addToCollection("Another Album from that year", "Rodriguez", 1970)', addToCollection('Another Album from that year', 'Rodriguez', 1970));
 
 
 console.log('collection now contains:', collection);
@@ -65,6 +66,7 @@ function findByArtist(artist){
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
 console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
 console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
+console.log('findByArtist("Rodriguez")', findByArtist("Rodriguez"));
 // > When testing your functions, write all tests in the JavaScript file!
 
 // STRETCH GOALS!
@@ -86,7 +88,8 @@ function search(searchItem) {
             //push matching record into results
             results.push(record);
         }
-    } return results;
+    } 
+    return results;
 }
 //----TESTS for search()----
 // console.log('search({})', search({}));
