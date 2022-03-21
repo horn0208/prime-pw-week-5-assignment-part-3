@@ -35,24 +35,33 @@ console.log('collection now contains:', collection);
 
 // - Add a function named `showCollection`. This function should:
 //   - Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
-function showCollection(recordArray){
+function showCollection(recordArray) {
     //   - Console.log the number of items in the array.
     console.log(`number of items in recordArray is ${recordArray.length}`);
     //   - Loop over the array and console.log each album's information formatted like: `TITLE by ARTIST, published in YEAR`.
-    for (record of recordArray) {
+    for (let record of recordArray) {
         console.log(`${record.title} by ${record.artist}, published in ${record.yearPublished}`);
     }
 }
-showCollection(collection);
-
 // - Test the `showCollection` function.
+showCollection(collection);
 
 // - Add a function named `findByArtist`. This function should:
 //   - Take in `artist` (a string) parameter
-//   - Create an array to hold any results, empty to start
-//   - Loop through the `collection` and add any objects with a matching artist to the array.
-//   - Return the array with the matching results. If no results are found, return an empty array.
+function findByArtist(artist){
+    //   - Create an array to hold any results, empty to start
+    let results = [];
+    //   - Loop through the `collection` and add any objects with a matching artist to the array.
+    for (let record of collection) {
+        if (record.artist === artist) {
+            results.push(record);
+        }
+    }
+    //   - Return the array with the matching results. If no results are found, return an empty array.
+    return results;
+}
 
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
-
+console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
+console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
 // > When testing your functions, write all tests in the JavaScript file!
