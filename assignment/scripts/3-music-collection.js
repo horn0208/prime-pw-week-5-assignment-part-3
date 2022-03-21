@@ -24,18 +24,14 @@ function addToCollection(title, artist, yearPublished){
 //   - Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 //   - Console.log each album as added using the returned value.
 //   - After all are added, console.log the `collection` array.
-addToCollection('Bandit salete', 'Sofiane', 2017);
 console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017));
-addToCollection('Bloodletter', 'Paleo', 2014);
 console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014));
-addToCollection('Boy King', 'Wild Beasts', 2016);
 console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016));
-addToCollection('Cupid Deluxe', 'Blood Orange', 2013);
 console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013));
-addToCollection('Sunbather', 'Deafheaven', 2013);
 console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013));
-addToCollection('Cold Fact', 'Rodriguez', 1970);
 console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970));
+
+console.log('collection now contains:', collection);
 
 // - Add a function named `showCollection`. This function should:
 //   - Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
