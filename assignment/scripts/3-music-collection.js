@@ -7,12 +7,13 @@ const collection = [];
 
 
 
-function addToCollection(title, artist, yearPublished){
+function addToCollection(title, artist, yearPublished, trackList){
 //   - Create a new object having the above properties
     let newAlbum = {
         title: title,
         artist: artist,
-        yearPublished: yearPublished
+        yearPublished: yearPublished,
+        trackList: trackList
     };
 //   - Add the new object to the end of the `collection` array
     collection.push(newAlbum);
@@ -24,12 +25,12 @@ function addToCollection(title, artist, yearPublished){
 //   - Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 //   - Console.log each album as added using the returned value.
 //   - After all are added, console.log the `collection` array.
-console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017));
-console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014));
-console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016));
-console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013));
-console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013));
-console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970));
+console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017, [['Bandit salete', '3:17'], ['Toka', '3:18'], ['Mon petit loup', '2:54']]));
+console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014, [['Shapeshifter', '2:44'], ['The Way Out of the Woods', '2:18'], ['Better Goodbyes', '3:04']]));
+console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016, [['Big Cat', '3:07'], ['Tough Guy', '3:31'], ['Alpha Female', '3:44']]));
+console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013, [['Chamakay', '4:20'], ["You're Not Good Enough", '4:21'], ['Uncle ACE', '4:16']]));
+console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013, [['Dream House', '9:14'], ['Irresistible', '3:13'], ['Sunbather', '10:16']]));
+console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970, [['Sugar Man', '3:49'], ['Crucify Your Mind', '2:32'], ['I Wonder', '2:34']]));
 // console.log('addToCollection("Another Album from that year", "Rodriguez", 1970)', addToCollection('Another Album from that year', 'Rodriguez', 1970));
 
 
@@ -104,8 +105,10 @@ function search(searchItem) {
 //     - If no results are found, return an empty array.
 //     - If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
 
+
 // - Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
 //   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
+//
 //   - Update `search` to allow a `trackName` search criteria.
 //   - Update the `showCollection` function to display the list of tracks for each album with its name and duration.
 // ```
