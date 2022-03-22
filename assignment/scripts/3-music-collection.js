@@ -4,9 +4,6 @@ const collection = [];
 
 // - Add a function named `addToCollection`. This function should:
 //   - Take in the album's `title`, `artist`, `yearPublished` as input parameters
-
-
-
 function addToCollection(title, artist, yearPublished, tracks){
 //   - Create a new object having the above properties
     let newAlbum = {
@@ -22,17 +19,15 @@ function addToCollection(title, artist, yearPublished, tracks){
 }
 
 // - Test the `addToCollection` function:
-//   - Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
+//   - Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years.
 //   - Console.log each album as added using the returned value.
 //   - After all are added, console.log the `collection` array.
-console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017, [{Name: 'Bandit salete', Duration: '3:17'}, {Name: 'Toka', Duration: '3:18'}, {Name: 'Mon petit loup', Duration: '2:54'}]));
-console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014, [{Name: 'Shapeshifter', Duration: '2:44'}, {Name: 'The Way Out of the Woods', Duration: '2:18'}, {Name: 'Better Goodbyes', Duration: '3:04'}]));
-console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016, [{Name: 'Big Cat', Duration: '3:07'}, {Name: 'Tough Guy', Duration: '3:31'}, {Name: 'Alpha Female', Duration: '3:44'}]));
-console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013, [{Name: 'Chamakay', Duration: '4:20'}, {Name: "You're Not Good Enough", Duration: '4:21'}, {Name: 'Uncle ACE', Duration: '4:16'}]));
-// console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013, [['Dream House', '9:14'], ['Irresistible', '3:13'], ['Sunbather', '10:16']]));
-console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970, [{Name: 'Sugar Man', Duration: '3:49'}, {Name: 'Crucify Your Mind', Duration: '2:32'}, {Name: 'I Wonder', Duration: '2:34'}]));
-console.log('addToCollection("Coming from Reality", "Rodriguez", 1970)', addToCollection('Coming from Reality', 'Rodriguez', 1970, [{Name: 'Climb Up on My Music', Duration: '4:54'}, {Name: 'A Most Disgusting Song', Duration: '4:49'}, {Name: 'I Think of You', Duration: '3:25'}]));
-
+console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017, [{name: 'Bandit salete', duration: '3:17'}, {name: 'Toka', duration: '3:18'}, {name: 'Mon petit loup', duration: '2:54'}]));
+console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014, [{name: 'Shapeshifter', duration: '2:44'}, {name: 'The Way Out of the Woods', duration: '2:18'}, {name: 'Better Goodbyes', duration: '3:04'}]));
+console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016, [{name: 'Big Cat', duration: '3:07'}, {name: 'Tough Guy', duration: '3:31'}, {name: 'Alpha Female', duration: '3:44'}]));
+console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013, [{name: 'Chamakay', duration: '4:20'}, {name: "You're Not Good Enough", duration: '4:21'}, {name: 'Uncle ACE', duration: '4:16'}]));
+console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970, [{name: 'Sugar Man', duration: '3:49'}, {name: 'Crucify Your Mind', duration: '2:32'}, {name: 'I Wonder', duration: '2:34'}]));
+console.log('addToCollection("Coming from Reality", "Rodriguez", 1970)', addToCollection('Coming from Reality', 'Rodriguez', 1970, [{name: 'Climb Up on My Music', duration: '4:54'}, {name: 'A Most Disgusting Song', duration: '4:49'}, {name: 'I Think of You', duration: '3:25'}]));
 
 console.log('collection now contains:', collection);
 
@@ -44,6 +39,14 @@ function showCollection(recordArray) {
     //   - Loop over the array and console.log each album's information formatted like: `TITLE by ARTIST, published in YEAR`.
     for (let record of recordArray) {
         console.log(`${record.title} by ${record.artist}, published in ${record.yearPublished}`);
+        //declare variable for track number outside the inner loop of tracks.
+        let trackNum = 1;
+        //loop through tracks in the record and console.log number, name, and duration
+        for (let track of record.tracks) {
+            // console.log('looping through tracks--inner loop in showCollection()');
+            console.log(`${trackNum}. ${track.name}: ${track.duration}`);
+            trackNum ++;
+        }
     }
 }
 // - Test the `showCollection` function.
@@ -65,10 +68,10 @@ function findByArtist(artist){
 }
 
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
-// console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
-// console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
+console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
+console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
 console.log('findByArtist("Rodriguez")', findByArtist("Rodriguez"));
-// > When testing your functions, write all tests in the JavaScript file!
+
 
 // STRETCH GOALS!
 // - Create a function called `search`. This function should:
@@ -86,14 +89,14 @@ function search(searchItem) {
         // for each, check if artist and year match between searchItem and record in collection
         if (searchItem.artist === record.artist && searchItem.year === record.yearPublished) {
             //console.log('found match:', record);
-            //push matching record into results
+            //push matching record into results array
             results.push(record);
         } 
         // loop through tracks of a given record
-        for (let nameAndDuration of record.tracks){
+        for (let track of record.tracks){
             // console.log('track name loop works! Yay!');
             //check if Name in tracks matches searched trackName
-            if (nameAndDuration.Name === searchItem.trackName) {
+            if (track.name === searchItem.trackName) {
                 // console.log('a track name match!');
                 //push matching record into results
                 results.push(record);
@@ -105,7 +108,7 @@ function search(searchItem) {
 //----TESTS for search()----
 // console.log('search({})', search({}));
 // console.log('search()', search());
-console.log('search({artist: "Unknown", year: 2013, trackName: "Chamakay"})', search({artist: 'Unknown', year: 2013, trackName: 'Chamakay'}));
+console.log('search({artist: "Unknown", year: 2013, trackName: "Uncle ACE"})', search({artist: 'Unknown', year: 2013, trackName: 'Uncle ACE'}));
 // console.log('search({artist: "Rodriguez", year: 1970})', search({artist: "Rodriguez", year: 1970}));
 // console.log('search({artist: "Wild Beasts", year: 1970})', search({artist: "Wild Beasts", year: 1970}));
 
@@ -113,18 +116,3 @@ console.log('search({artist: "Unknown", year: 2013, trackName: "Chamakay"})', se
 //     - Return a new array of all items in the `collection` matching *all* of the search criteria.
 //     - If no results are found, return an empty array.
 //     - If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
-
-
-// - Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
-//   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
-//
-//   - Update `search` to allow a `trackName` search criteria.
-//   - Update the `showCollection` function to display the list of tracks for each album with its name and duration.
-// ```
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
-//     3. NAME: DURATION
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
