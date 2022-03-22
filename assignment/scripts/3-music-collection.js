@@ -7,13 +7,13 @@ const collection = [];
 
 
 
-function addToCollection(title, artist, yearPublished, trackList){
+function addToCollection(title, artist, yearPublished, tracks){
 //   - Create a new object having the above properties
     let newAlbum = {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
-        trackList: trackList
+        tracks: tracks
     };
 //   - Add the new object to the end of the `collection` array
     collection.push(newAlbum);
@@ -25,13 +25,13 @@ function addToCollection(title, artist, yearPublished, trackList){
 //   - Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 //   - Console.log each album as added using the returned value.
 //   - After all are added, console.log the `collection` array.
-console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017, [['Bandit salete', '3:17'], ['Toka', '3:18'], ['Mon petit loup', '2:54']]));
-console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014, [['Shapeshifter', '2:44'], ['The Way Out of the Woods', '2:18'], ['Better Goodbyes', '3:04']]));
-console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016, [['Big Cat', '3:07'], ['Tough Guy', '3:31'], ['Alpha Female', '3:44']]));
-console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013, [['Chamakay', '4:20'], ["You're Not Good Enough", '4:21'], ['Uncle ACE', '4:16']]));
-console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013, [['Dream House', '9:14'], ['Irresistible', '3:13'], ['Sunbather', '10:16']]));
-console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970, [['Sugar Man', '3:49'], ['Crucify Your Mind', '2:32'], ['I Wonder', '2:34']]));
-// console.log('addToCollection("Another Album from that year", "Rodriguez", 1970)', addToCollection('Another Album from that year', 'Rodriguez', 1970));
+console.log('addToCollection("Bandit salete", "Sofiane", 2017)', addToCollection('Bandit salete', 'Sofiane', 2017, [{Name: 'Bandit salete', Duration: '3:17'}, {Name: 'Toka', Duration: '3:18'}, {Name: 'Mon petit loup', Duration: '2:54'}]));
+console.log('addToCollection("Bloodletter", "Paleo", 2014)', addToCollection('Bloodletter', 'Paleo', 2014, [{Name: 'Shapeshifter', Duration: '2:44'}, {Name: 'The Way Out of the Woods', Duration: '2:18'}, {Name: 'Better Goodbyes', Duration: '3:04'}]));
+console.log('addToCollection("Boy King", "Wild Beasts", 2016)', addToCollection('Boy King', 'Wild Beasts', 2016, [{Name: 'Big Cat', Duration: '3:07'}, {Name: 'Tough Guy', Duration: '3:31'}, {Name: 'Alpha Female', Duration: '3:44'}]));
+console.log('addToCollection("Cupid Deluxe", "Blood Orange", 2013)', addToCollection('Cupid Deluxe', 'Blood Orange', 2013, [{Name: 'Chamakay', Duration: '4:20'}, {Name: "You're Not Good Enough", Duration: '4:21'}, {Name: 'Uncle ACE', Duration: '4:16'}]));
+// console.log('addToCollection("Sunbather", "Deafheaven", 2013)', addToCollection('Sunbather', 'Deafheaven', 2013, [['Dream House', '9:14'], ['Irresistible', '3:13'], ['Sunbather', '10:16']]));
+console.log('addToCollection("Cold Fact", "Rodriguez", 1970)', addToCollection('Cold Fact', 'Rodriguez', 1970, [{Name: 'Sugar Man', Duration: '3:49'}, {Name: 'Crucify Your Mind', Duration: '2:32'}, {Name: 'I Wonder', Duration: '2:34'}]));
+console.log('addToCollection("Coming from Reality", "Rodriguez", 1970)', addToCollection('Coming from Reality', 'Rodriguez', 1970, [{Name: 'Climb Up on My Music', Duration: '4:54'}, {Name: 'A Most Disgusting Song', Duration: '4:49'}, {Name: 'I Think of You', Duration: '3:25'}]));
 
 
 console.log('collection now contains:', collection);
@@ -65,15 +65,15 @@ function findByArtist(artist){
 }
 
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
-console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
-console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
+// console.log('findByArtist("Willie Nelson")', findByArtist("Willie Nelson"));
+// console.log('findByArtist("Blood Orange")', findByArtist("Blood Orange"));
 console.log('findByArtist("Rodriguez")', findByArtist("Rodriguez"));
 // > When testing your functions, write all tests in the JavaScript file!
 
 // STRETCH GOALS!
 // - Create a function called `search`. This function should:
 //   - Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
-//   { artist: 'Ray Charles', year: 1957 }
+//   { artist: 'Ray Charles', year: 1957, trackName: 'A Song' } ---updated to also include trackName
 function search(searchItem) {
     let results = [];
     //  If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
@@ -88,6 +88,16 @@ function search(searchItem) {
             //console.log('found match:', record);
             //push matching record into results
             results.push(record);
+        } 
+        // loop through tracks of a given record
+        for (let nameAndDuration of record.tracks){
+            // console.log('track name loop works! Yay!');
+            //check if Name in tracks matches searched trackName
+            if (nameAndDuration.Name === searchItem.trackName) {
+                // console.log('a track name match!');
+                //push matching record into results
+                results.push(record);
+            }
         }
     } 
     return results;
@@ -95,8 +105,7 @@ function search(searchItem) {
 //----TESTS for search()----
 // console.log('search({})', search({}));
 // console.log('search()', search());
-// console.log('search({artist: "Blood Orange", year: 2013})', search({artist: 'Blood Orange', year: 2013}));
-// console.log('addToCollection("Another Album from that year", "Rodriguez", 1970)', addToCollection('Another Album from that year', 'Rodriguez', 1970));
+console.log('search({artist: "Unknown", year: 2013, trackName: "Chamakay"})', search({artist: 'Unknown', year: 2013, trackName: 'Chamakay'}));
 // console.log('search({artist: "Rodriguez", year: 1970})', search({artist: "Rodriguez", year: 1970}));
 // console.log('search({artist: "Wild Beasts", year: 1970})', search({artist: "Wild Beasts", year: 1970}));
 
